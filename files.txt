@@ -1,0 +1,107 @@
+total 0
+drwxr-xr-x@  5 mac  staff  160 Feb 14 13:28 .
+drwxr-xr-x@ 17 mac  staff  544 Feb 15 17:23 ..
+drwxr-xr-x@  9 mac  staff  288 Feb 15 16:06 app
+drwxr-xr-x@  6 mac  staff  192 Feb 14 19:09 components
+drwxr-xr-x@  5 mac  staff  160 Feb 14 13:29 lib
+
+src/app:
+total 128
+drwxr-xr-x@ 9 mac  staff    288 Feb 15 16:06 .
+drwxr-xr-x@ 5 mac  staff    160 Feb 14 13:28 ..
+drwxr-xr-x@ 3 mac  staff     96 Feb 14 19:09 about
+drwxr-xr-x@ 3 mac  staff     96 Feb 14 19:09 contact
+-rw-r--r--@ 1 mac  staff  25931 Feb 14 13:24 favicon.ico
+-rw-r--r--@ 1 mac  staff   7545 Feb 15 16:06 globals.css
+-rw-r--r--@ 1 mac  staff    922 Feb 15 16:06 layout.tsx
+-rw-r--r--@ 1 mac  staff  20600 Feb 15 17:10 page.tsx
+drwxr-xr-x@ 5 mac  staff    160 Feb 14 23:46 services
+
+src/app/about:
+total 24
+drwxr-xr-x@ 3 mac  staff     96 Feb 14 19:09 .
+drwxr-xr-x@ 9 mac  staff    288 Feb 15 16:06 ..
+-rw-r--r--@ 1 mac  staff  10183 Feb 15 17:10 page.tsx
+
+src/app/contact:
+total 24
+drwxr-xr-x@ 3 mac  staff     96 Feb 14 19:09 .
+drwxr-xr-x@ 9 mac  staff    288 Feb 15 16:06 ..
+-rw-r--r--@ 1 mac  staff  10637 Feb 15 16:55 page.tsx
+
+src/app/services:
+total 16
+drwxr-xr-x@ 5 mac  staff   160 Feb 14 23:46 .
+drwxr-xr-x@ 9 mac  staff   288 Feb 15 16:06 ..
+drwxr-xr-x@ 3 mac  staff    96 Feb 14 19:09 ai-consultancy
+drwxr-xr-x@ 3 mac  staff    96 Feb 14 19:08 erp-consultancy
+-rw-r--r--@ 1 mac  staff  6717 Feb 15 17:10 page.tsx
+
+src/app/services/ai-consultancy:
+total 24
+drwxr-xr-x@ 3 mac  staff     96 Feb 14 19:09 .
+drwxr-xr-x@ 5 mac  staff    160 Feb 14 23:46 ..
+-rw-r--r--@ 1 mac  staff  11098 Feb 15 16:06 page.tsx
+
+src/app/services/erp-consultancy:
+total 24
+drwxr-xr-x@ 3 mac  staff    96 Feb 14 19:08 .
+drwxr-xr-x@ 5 mac  staff   160 Feb 14 23:46 ..
+-rw-r--r--@ 1 mac  staff  8730 Feb 15 16:06 page.tsx
+
+src/components:
+total 0
+drwxr-xr-x@  6 mac  staff  192 Feb 14 19:09 .
+drwxr-xr-x@  5 mac  staff  160 Feb 14 13:28 ..
+drwxr-xr-x@  3 mac  staff   96 Feb 14 19:09 forms
+drwxr-xr-x@  4 mac  staff  128 Feb 14 13:30 layout
+drwxr-xr-x@  7 mac  staff  224 Feb 15 16:06 sections
+drwxr-xr-x@ 14 mac  staff  448 Feb 15 17:10 ui
+
+src/components/forms:
+total 16
+drwxr-xr-x@ 3 mac  staff    96 Feb 14 19:09 .
+drwxr-xr-x@ 6 mac  staff   192 Feb 14 19:09 ..
+-rw-r--r--@ 1 mac  staff  6753 Feb 15 16:06 ContactForm.tsx
+
+src/components/layout:
+total 48
+drwxr-xr-x@ 4 mac  staff    128 Feb 14 13:30 .
+drwxr-xr-x@ 6 mac  staff    192 Feb 14 19:09 ..
+-rw-r--r--@ 1 mac  staff   8288 Feb 15 16:17 Footer.tsx
+-rw-r--r--@ 1 mac  staff  10651 Feb 15 16:06 Header.tsx
+
+src/components/sections:
+total 72
+drwxr-xr-x@ 7 mac  staff   224 Feb 15 16:06 .
+drwxr-xr-x@ 6 mac  staff   192 Feb 14 19:09 ..
+-rw-r--r--@ 1 mac  staff  8065 Feb 15 16:17 HeroSection.tsx
+-rw-r--r--@ 1 mac  staff  4476 Feb 15 16:50 InsightsSection.tsx
+-rw-r--r--@ 1 mac  staff  4359 Feb 15 17:13 ServicesSection.tsx
+-rw-r--r--@ 1 mac  staff  5383 Feb 15 17:10 TeamMastery.tsx
+-rw-r--r--@ 1 mac  staff  3038 Feb 15 17:13 TrustWall.tsx
+
+src/components/ui:
+total 120
+drwxr-xr-x@ 14 mac  staff    448 Feb 15 17:10 .
+drwxr-xr-x@  6 mac  staff    192 Feb 14 19:09 ..
+-rw-r--r--@  1 mac  staff  13022 Feb 15 16:06 AIRoadmapAudit.tsx
+-rw-r--r--@  1 mac  staff   1417 Feb 14 13:29 AnimatedCounter.tsx
+-rw-r--r--@  1 mac  staff   2299 Feb 14 13:32 Button.tsx
+-rw-r--r--@  1 mac  staff   1223 Feb 14 13:32 Card.tsx
+-rw-r--r--@  1 mac  staff    774 Feb 14 18:58 Container.tsx
+-rw-r--r--@  1 mac  staff    723 Feb 14 13:29 GradientText.tsx
+-rw-r--r--@  1 mac  staff   3041 Feb 15 16:06 KathmanduSkyline.tsx
+-rw-r--r--@  1 mac  staff   1459 Feb 15 16:06 MeshBackground.tsx
+-rw-r--r--@  1 mac  staff   1969 Feb 14 19:08 MobileFAB.tsx
+-rw-r--r--@  1 mac  staff   3069 Feb 15 17:10 SectionHeading.tsx
+-rw-r--r--@  1 mac  staff   2171 Feb 15 00:15 SentientBackground.tsx
+-rw-r--r--@  1 mac  staff   1566 Feb 15 16:17 SentientGlint.tsx
+
+src/lib:
+total 32
+drwxr-xr-x@ 5 mac  staff   160 Feb 14 13:29 .
+drwxr-xr-x@ 5 mac  staff   160 Feb 14 13:28 ..
+-rw-r--r--@ 1 mac  staff  3084 Feb 14 13:29 animations.ts
+-rw-r--r--@ 1 mac  staff  5941 Feb 15 16:06 constants.ts
+-rw-r--r--@ 1 mac  staff   283 Feb 14 13:28 utils.ts
