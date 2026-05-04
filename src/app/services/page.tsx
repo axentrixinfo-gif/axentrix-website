@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Brain, Sparkles, Zap, Shield, Target, Users, BookOpen, Clock, Activity, MessageSquare } from "lucide-react";
+import { BrainIcon, Sparkles, Zap, Shield, Target, Users, BookOpen, Clock, Activity, MessageSquare } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SentientGlint from "@/components/ui/SentientGlint";
 import Container from "@/components/ui/Container";

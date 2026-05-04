@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Globe, Linkedin, Facebook, Twitter, Sparkles, Brain, Clock, Shield, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Sparkles, Clock, Shield, CheckCircle } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SentientGlint from "@/components/ui/SentientGlint";
@@ -139,9 +139,7 @@ const ContactPage = () => {
                                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-10">Veteran Networks</p>
                                 <div className="flex space-x-12">
                                     {[
-                                        { icon: Linkedin, href: COMPANY_INFO.social.linkedin },
-                                        { icon: Facebook, href: COMPANY_INFO.social.facebook },
-                                        { icon: Twitter, href: COMPANY_INFO.social.twitter }
+                                        { icon: Globe, href: COMPANY_INFO.social.twitter }
                                     ].map((social, i) => (
                                         <a
                                             key={i}

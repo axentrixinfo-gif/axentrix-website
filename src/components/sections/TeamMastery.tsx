@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Globe, Sparkles, Brain, Database, Zap } from "lucide-react";
+import { Globe, Sparkles, BrainIcon, Database, Zap } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import Container from "../ui/Container";
 import SentientGlint from "../ui/SentientGlint";
@@ -13,7 +13,7 @@ const veterans = [
         role: "Head of AI Architecture",
         bio: "Veteran systems architect with 15+ years in neural networks and agentic workflow design. Specialized in fusing high-velocity AI with legacy ERP cores.",
         specialization: ["Neural Integration", "LLM Strategy", "Agentic Design"],
-        icon: Brain
+        icon: BrainIcon
     },
     {
         name: "Sagar P.",
@@ -76,9 +76,6 @@ const TeamMastery: React.FC = () => {
                                     </div>
 
                                     <div className="flex space-x-6 pt-10 border-t border-gray-100">
-                                        <a href="#" className="text-gray-400 hover:text-navy transition-all hover:scale-110">
-                                            <Linkedin className="w-6 h-6" />
-                                        </a>
                                         <a href="#" className="text-gray-400 hover:text-navy transition-all hover:scale-110">
                                             <Globe className="w-6 h-6" />
                                         </a>

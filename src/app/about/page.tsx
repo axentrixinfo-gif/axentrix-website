@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Brain, Sparkles, Zap, Shield, Target, Users, BookOpen } from "lucide-react";
+import { BrainIcon, Sparkles, Zap, Shield, Target, Users, BookOpen } from "lucide-react";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SentientGlint from "@/components/ui/SentientGlint";
@@ -123,7 +123,7 @@ const AboutPage = () => {
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-pink/5 rounded-bl-[100px] group-hover:scale-150 transition-transform duration-700" />
                                     <div className="relative z-10">
                                         <div className="w-20 h-20 rounded-[32px] bg-navy text-white flex items-center justify-center mb-10 group-hover:bg-pink transition-all duration-500 shadow-xl border border-white/10">
-                                            <Brain className="w-10 h-10" />
+                                            <BrainIcon className="w-10 h-10" />
                                         </div>
                                         <h4 className="text-3xl font-black text-navy mb-2 tracking-tight group-hover:text-pink transition-colors">{member.name}</h4>
                                         <p className="text-pink text-xs font-black uppercase tracking-widest mb-6">{member.role}</p>

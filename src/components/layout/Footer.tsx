@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Facebook, Twitter, Terminal, Cpu, Globe, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Terminal, Cpu, Zap } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/constants";
 import NeuralTopology from "../ui/NeuralTopology";
 import NeuralPulse from "../ui/NeuralPulse";
@@ -13,6 +13,35 @@ import SentientGlint from "../ui/SentientGlint";
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
+
+    const shards = [
+        {
+            label: "SYSTEMS",
+            tag: "01",
+            icon: Cpu,
+            links: [
+                { name: 'Neural Core', path: '/services/ai-consultancy' },
+                { name: 'ERP Solutions', path: '/services/erp-consultancy' },
+                { name: 'Industry Solutions', path: '/services/industry-solutions' }
+            ]
+        },
+        {
+            label: "INTEL",
+            tag: "02",
+            icon: Terminal,
+            links: [
+                { name: 'About the Veterans', path: '/about' },
+                { name: 'Industry Insights', path: '/insights' },
+                { name: 'Contact Neural HQ', path: '/contact' }
+            ]
+        },
+        {
+            label: "UPLINK",
+            tag: "03",
+            icon: Globe,
+            isContact: true
+        }
+    ];
 
     return (
         <footer className="relative bg-navy-dark overflow-hidden">
@@ -23,11 +52,6 @@ const Footer: React.FC = () => {
             <CommandTicker />
 
             <div className="relative pt-32 pb-20">
-                {/* 
-                  [LAYER RESTACKING] 
-                  Nexus is now placed ABOVE the content so it is NOT occluded by glassmorphic shards.
-                  The wrapper (z-50) is pointer-events-none, but children (bubbles) have pointer-events-auto.
-                */}
                 <div className="absolute inset-0 z-50 pointer-events-none">
                     <NeuralTopology />
                 </div>
@@ -54,7 +78,6 @@ const Footer: React.FC = () => {
                                         height={40}
                                         className="h-10 w-auto brightness-0 invert"
                                     />
-                                    {/* Scanline effect over logo */}
                                     <motion.div
                                         animate={{ y: ["-100%", "200%"] }}
                                         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -79,36 +102,7 @@ const Footer: React.FC = () => {
 
                         {/* Column 2-4: The Data Shards (Navigation) */}
                         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                {
-                                    label: "EXPLORE",
-                                    tag: "01",
-                                    icon: Terminal,
-                                    links: [
-                                        { name: 'About Us', path: '/about' },
-                                        { name: 'Services', path: '/services' },
-                                        { name: 'Contact', path: '/contact' },
-                                        { name: 'Privacy', path: '/privacy-policy' }
-                                    ]
-                                },
-                                {
-                                    label: "ARCHITECTURE",
-                                    tag: "02",
-                                    icon: Cpu,
-                                    links: [
-                                        { name: 'ERP Mastery', path: '/services/erp-consultancy' },
-                                        { name: 'Neural Core', path: '/services/ai-consultancy' },
-                                        { name: 'Sectors', path: '/services/industry-solutions' }
-                                    ]
-                                },
-                                {
-                                    label: "UPLINK",
-                                    tag: "03",
-                                    icon: Globe,
-                                    isContact: true,
-                                    links: [] // Handled separately for contact info
-                                }
-                            ].map((shard, idx) => (
+                            {shards.map((shard, idx) => (
                                 <SentientGlint key={idx} className="h-full">
                                     <div className="h-full p-8 rounded-[32px] bg-white/5 backdrop-blur-3xl border border-white/5 hover:border-pink/20 transition-all group relative overflow-hidden holographic-border">
                                         <div className="flex items-center justify-between mb-10">
@@ -119,14 +113,11 @@ const Footer: React.FC = () => {
                                             <shard.icon className="w-5 h-5 text-white/10 group-hover:text-pink/40 transition-colors" />
                                         </div>
 
-                                        {!shard.isContact ? (
+                                        {!shard.isContact && shard.links ? (
                                             <ul className="space-y-5">
-                                                {shard.links.map((link) => (
-                                                    <li key={link.name}>
-                                                        <Link
-                                                            href={link.path}
-                                                            className="text-white/50 hover:text-white transition-all font-bold text-lg tracking-tight flex items-center gap-2 group/link"
-                                                        >
+                                                {shard.links.map((link, linkIdx) => (
+                                                    <li key={linkIdx}>
+                                                        <Link href={link.path} className="text-white/50 hover:text-white transition-all font-bold text-lg tracking-tight flex items-center gap-2 group/link">
                                                             <div className="w-0 h-0.5 bg-pink group-hover/link:w-3 transition-all" />
                                                             {link.name}
                                                         </Link>
