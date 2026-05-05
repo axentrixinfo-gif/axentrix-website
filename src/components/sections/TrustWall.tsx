@@ -12,15 +12,15 @@ import SentientGlint from "../ui/SentientGlint";
 
 interface ArsenalItem {
     name: string;
-    icon: any;
+    icon: React.FC<{ className?: string }>;
     className?: string;
     color: string;
 }
 
 const arsenalItems: ArsenalItem[] = [
-    { name: "Agentic Workflows", icon: Brain, className: "lg:col-span-2 lg:row-span-2", color: "#FF1E6D" }, // Pink
-    { name: "Predictive Engines", icon: TrendingUp, color: "#00EDFF" }, // Cyan
-    { name: "Neural ERP Sync", icon: Layers, color: "#A855F7" }, // Purple
+    { name: "Agentic Workflows", icon: Brain, className: "lg:col-span-2 lg:row-span-2", color: "#FF1E6D" },
+    { name: "Predictive Engines", icon: TrendingUp, color: "#00EDFF" },
+    { name: "Neural ERP Sync", icon: Layers, color: "#A855F7" },
     { name: "Computer Vision", icon: Eye, color: "#FF1E6D" },
     { name: "Private LLMs", icon: ShieldCheck, color: "#00EDFF" },
     { name: "Strategy Nodes", icon: Network, className: "lg:col-span-2", color: "#A855F7" },
@@ -32,7 +32,6 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
     const cardRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
-    // Magnetic values - dampened for high-prestige feel
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -40,7 +39,6 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
     const springX = useSpring(x, springConfig);
     const springY = useSpring(y, springConfig);
 
-    // Tilt values for 3D depth
     const rotateX = useTransform(springY, [-100, 100], [12, -12]);
     const rotateY = useTransform(springX, [-100, 100], [-12, 12]);
 
@@ -50,7 +48,6 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
 
-        // Calculate distance from center (magnetic pull)
         const distanceX = (e.clientX - centerX) * 0.35;
         const distanceY = (e.clientY - centerY) * 0.35;
 
@@ -63,6 +60,8 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
         y.set(0);
         setIsHovered(false);
     };
+
+    const Icon = item.icon;
 
     return (
         <SentientGlint className={item.className || ""}>
@@ -96,7 +95,9 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
                                 rotateZ: { duration: 0.5, ease: "easeInOut" }
                             }}
                         >
-                            <item.icon className="w-8 h-8" />
+                            <div className="w-8 h-8 flex items-center justify-center">
+                                <Icon className="w-8 h-8" />
+                            </div>
                         </motion.div>
 
                         {/* Sentient Echo Waves */}
@@ -121,16 +122,16 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
                         >
                             {item.name}
                         </motion.span>
+                    </div>
 
-                        {/* Dynamic Progress Indicator */}
-                        <div className="w-12 h-[3px] bg-navy/5 mx-auto rounded-full overflow-hidden">
-                            <motion.div
-                                className="h-full bg-pink"
-                                initial={{ width: 0 }}
-                                animate={{ width: isHovered ? "100%" : "0%" }}
-                                transition={{ duration: 0.5 }}
-                            />
-                        </div>
+                    {/* Dynamic Progress Indicator */}
+                    <div className="w-12 h-[3px] bg-navy/5 mx-auto rounded-full overflow-hidden">
+                        <motion.div
+                            className="h-full bg-pink"
+                            initial={{ width: 0 }}
+                            animate={{ width: isHovered ? "100%" : "0%" }}
+                            transition={{ duration: 0.5 }}
+                        />
                     </div>
                 </div>
 
@@ -138,7 +139,7 @@ const MagneticCard: React.FC<{ item: ArsenalItem; index: number }> = ({ item, in
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-[radial-gradient(circle_at_50%_50%,rgba(255,30,109,0.05),transparent_70%)]" />
 
                 {/* Subtle light glint that follows mouse */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink/10 to-transparent rounded-bl-full translate-x-16 -translate-y-16 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-1000" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink/10 to-transparent rounded-bl-full translate-x-16 -translate-y-16 group-hover:translate-x-0 group-hover:-translate-y-0 transition-transform duration-1000" />
             </motion.div>
         </SentientGlint>
     );

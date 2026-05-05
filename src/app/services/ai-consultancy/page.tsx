@@ -39,7 +39,7 @@ const AIConsultancyPage = () => {
                         </h1>
 
                         <p className="text-2xl text-gray-600 mb-16 leading-relaxed font-semibold max-w-3xl">
-                            We don't just implement AI; we architect intelligent ecosystems
+                            We don&apos;t just implement AI; we architect intelligent ecosystems
                             that autonomously drive business value. From agentic workflows
                             to neural ERP integration.
                         </p>
@@ -165,7 +165,7 @@ const AIConsultancyPage = () => {
                         <div className="absolute top-0 right-0 w-64 h-64 bg-pink/5 rounded-bl-full transform translate-x-12 -translate-y-12 group-hover:scale-110 transition-transform duration-1000 z-0" />
                         <div className="relative z-10">
                             <h2 className="text-5xl md:text-8xl font-black text-navy mb-10 tracking-tighter leading-[0.85]">
-                                Don't Just Forecast. <br />
+                                Don&apos;t Just Forecast. <br />
                                 <GradientText>Decide with Certainty.</GradientText>
                             </h2>
                             <p className="text-2xl text-gray-600 mb-16 leading-relaxed font-bold max-w-3xl mx-auto">

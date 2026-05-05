@@ -67,12 +67,13 @@ const ChatBot: React.FC = () => {
                 role: 'assistant',
                 content: data.content || "I'm here to help! How can I assist you today?"
             }]);
-        } catch (error: any) {
-            console.error("Chat error:", error);
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : "Unknown error";
+            console.error("Chat error:", message);
             setMessages(prev => [...prev, {
                 id: (Date.now() + 2).toString(),
                 role: 'assistant',
-                content: error.message?.includes("API") 
+                content: message.includes("API") 
                     ? "I'm having trouble connecting to my AI services. Please try again or contact us at info@axentrixinc.com"
                     : "I apologize, but I'm having trouble connecting. Please try again or contact us at info@axentrixinc.com"
             }]);
@@ -115,8 +116,9 @@ const ChatBot: React.FC = () => {
                 role: 'assistant',
                 content: data.content || "How else can I help you?"
             }]);
-        }).catch((error: any) => {
-            console.error("Chat error:", error);
+        }).catch((error: unknown) => {
+            const message = error instanceof Error ? error.message : "Unknown error";
+            console.error("Chat error:", message);
             setMessages(prev => [...prev, {
                 id: (Date.now() + 2).toString(),
                 role: 'assistant',

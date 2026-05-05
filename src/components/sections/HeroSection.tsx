@@ -6,12 +6,13 @@ import { motion } from "framer-motion";
 import {
     ArrowRight, Sparkles, Zap, Users, Award
 } from "lucide-react";
+import type { Variants } from "framer-motion";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import GradientText from "../ui/GradientText";
 
 const HeroSection: React.FC = () => {
-    const containerVariants: any = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -22,7 +23,7 @@ const HeroSection: React.FC = () => {
         },
     };
 
-    const itemVariants: any = {
+    const itemVariants: Variants = {
         hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,

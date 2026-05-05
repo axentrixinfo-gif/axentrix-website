@@ -25,7 +25,7 @@ const SentientBackground: React.FC<SentientBackgroundProps> = ({
     const [mounted, setMounted] = React.useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => setMounted(true), 0);
         const handleMouseMove = (e: MouseEvent) => {
             // Offset by half window size to center
             mouseX.set(e.clientX);
@@ -33,7 +33,10 @@ const SentientBackground: React.FC<SentientBackgroundProps> = ({
         };
 
         window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
     }, [mouseX, mouseY]);
 
     return (

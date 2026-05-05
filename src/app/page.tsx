@@ -41,7 +41,7 @@ export default function HomePage() {
                                     <GradientText>Axentrix Inc?</GradientText>
                                 </h2>
                                 <p className="text-2xl text-gray-500 font-medium leading-relaxed max-w-xl">
-                                    We aren't just developers. We are consultants who have survived 15+ years of enterprise shifting
+                                    We&apos;re not just developers. We are consultants who have survived 15+ years of enterprise shifting
                                     from local data silos to global autonomous agents.
                                 </p>
 
@@ -82,7 +82,7 @@ export default function HomePage() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <p className="text-5xl font-black text-navy tracking-tighter italic">"Precision at Scale."</p>
+                                        <p className="text-5xl font-black text-navy tracking-tighter italic">&quot;Precision at Scale.&quot;</p>
                                         <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] leading-relaxed">
                                             Enterprise Optimization Logic
                                         </p>

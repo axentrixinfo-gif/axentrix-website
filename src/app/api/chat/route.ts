@@ -81,13 +81,14 @@ Initial greeting: "Welcome to Axentrix Inc. I'm Axie. Ask me about our ERP and A
                 'Content-Type': 'application/json',
             },
         });
-    } catch (error: any) {
-        console.error("Chat API error:", error.message || error);
-        return new Response(
-            JSON.stringify({ 
-                error: "Internal server error",
-                details: error.message || "Unknown error"
-            }),
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : "Unknown error";
+            console.error("Chat API error:", message);
+            return new Response(
+                JSON.stringify({ 
+                    error: "Internal server error",
+                    details: message
+                }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
     }

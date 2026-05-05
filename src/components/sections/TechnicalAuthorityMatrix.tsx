@@ -65,7 +65,7 @@ const TechnicalAuthorityMatrix: React.FC = () => {
                     {expertise.map((item, i) => (
                         <HolographicCard
                             key={i}
-                            glowColor={item.glow as any}
+                            glowColor={item.glow as "blue" | "pink" | "teal"}
                             className="p-12 h-full flex flex-col bg-white/80 backdrop-blur-xl border-white/5 shadow-sm hover:shadow-2xl holographic-border rounded-[40px]"
                         >
                             <div className="w-14 h-14 rounded-[20px] bg-navy flex items-center justify-center mb-10 group-hover:scale-110 group-hover:bg-pink transition-all duration-500 shadow-xl border border-white/10">

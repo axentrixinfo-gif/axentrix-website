@@ -33,7 +33,6 @@ const Card: React.FC<CardProps> = ({
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
             whileHover={hover ? { scale: 1.02 } : {}}
-            {...(props as any)}
         >
             {children}
         </motion.div>

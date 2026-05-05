@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Node {
@@ -9,11 +9,28 @@ interface Node {
     initialY: number;
     size: number;
     isEgg?: boolean;
+    animXOffset: number;
+    animYOffset: number;
+    durationX: number;
+    durationY: number;
 }
 
 const NeuralTopology: React.FC = () => {
     const [nodes, setNodes] = useState<Node[]>([]);
     const audioCtxRef = useRef<AudioContext | null>(null);
+
+    // Pre-calculate random animation values for each node
+    const getNodeAnimation = useCallback((node: Node) => {
+        const seed = node.id * 1000;
+        const pseudoRandom = (n: number) => ((n * 9301 + 49297) % 233280) / 233280;
+        
+        return {
+            xOffset: (pseudoRandom(seed) - 0.5) * 150,
+            yOffset: (pseudoRandom(seed + 500) - 0.5) * 150,
+            durationX: 15 + pseudoRandom(seed + 1000) * 15,
+            durationY: 20 + pseudoRandom(seed + 1500) * 15,
+        };
+    }, []);
 
     // Initialize Web Audio API on first interaction
     const playPop = useCallback((isShatter: boolean = false) => {
@@ -59,12 +76,19 @@ const NeuralTopology: React.FC = () => {
     }, []);
 
     const generateRandomNode = useCallback((id: number, isEgg = false, size?: number): Node => {
+        const seed = id * 1000;
+        const pseudoRandom = (n: number) => ((n * 9301 + 49297) % 233280) / 233280;
+        
         return {
             id,
-            initialX: Math.random() * 100,
-            initialY: Math.random() * 100,
-            size: size || (isEgg ? 40 : Math.random() * 30 + 10), // REDUCED: Egg is 40px wide
+            initialX: pseudoRandom(seed) * 100,
+            initialY: pseudoRandom(seed + 100) * 100,
+            size: size || (isEgg ? 40 : pseudoRandom(seed + 200) * 30 + 10),
             isEgg,
+            animXOffset: (pseudoRandom(seed + 300) - 0.5) * 150,
+            animYOffset: (pseudoRandom(seed + 400) - 0.5) * 150,
+            durationX: 15 + pseudoRandom(seed + 500) * 15,
+            durationY: 20 + pseudoRandom(seed + 600) * 15,
         };
     }, []);
 
@@ -81,7 +105,7 @@ const NeuralTopology: React.FC = () => {
             if (nodes.length === 0) initializeField();
         }, 1000);
         return () => clearTimeout(timer);
-    }, [initializeField]);
+    }, [initializeField, nodes.length]);
 
     const handleMasterBurst = useCallback(() => {
         playPop(true);
@@ -107,7 +131,7 @@ const NeuralTopology: React.FC = () => {
         // Remove individual node
         setNodes(prev => prev.filter(n => n.id !== node.id));
 
-        // KIND-PRESERVING RESPRAWN
+        // KIND-PRESERVING RESPAWN
         setNodes(prev => [...prev, generateRandomNode(Date.now() + Math.random(), false, node.size)]);
     };
 
@@ -123,14 +147,14 @@ const NeuralTopology: React.FC = () => {
                             left: `${node.initialX}%`,
                             top: `${node.initialY}%`,
                             width: node.isEgg ? 40 : node.size,
-                            height: node.isEgg ? 25 : node.size, // MINI-OVAL DIMENSIONS
+                            height: node.isEgg ? 25 : node.size,
                         }}
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{
                             scale: 1,
                             opacity: node.isEgg ? 0.7 : 0.4,
-                            x: [0, (Math.random() - 0.5) * 150, (Math.random() - 0.5) * 150, 0],
-                            y: [0, (Math.random() - 0.5) * 150, (Math.random() - 0.5) * 150, 0],
+                            x: [0, node.animXOffset, -node.animXOffset, 0],
+                            y: [0, node.animYOffset, -node.animYOffset, 0],
                         }}
                         exit={{
                             scale: node.isEgg ? 10 : 4,
@@ -142,12 +166,12 @@ const NeuralTopology: React.FC = () => {
                             opacity: { duration: 1 },
                             scale: { duration: 0.5 },
                             x: {
-                                duration: 15 + Math.random() * 15,
+                                duration: node.durationX,
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             },
                             y: {
-                                duration: 20 + Math.random() * 15,
+                                duration: node.durationY,
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }
