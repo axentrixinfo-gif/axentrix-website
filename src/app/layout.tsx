@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileFAB from "@/components/ui/MobileFAB";
 import ChatBot from "@/components/ui/ChatBot";
+import { UIProvider } from "@/contexts/UIContext";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -32,11 +33,13 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${inter.className} font-sans`}>
-                <Header />
-                <main>{children}</main>
-                <Footer />
-                <MobileFAB />
-                <ChatBot />
+                <UIProvider>
+                    <Header />
+                    <main>{children}</main>
+                    <Footer />
+                    <MobileFAB />
+                    <ChatBot />
+                </UIProvider>
             </body>
         </html>
     );

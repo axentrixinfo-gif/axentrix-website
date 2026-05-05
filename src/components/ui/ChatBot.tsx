@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send } from "lucide-react";
+import { useUI } from "@/contexts/UIContext";
 
 interface Message {
     id: string;
@@ -11,7 +12,7 @@ interface Message {
 }
 
 const ChatBot: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const { isChatOpen, setChatOpen } = useUI();
     const [messages, setMessages] = useState<Message[]>([
         {
             id: "welcome",
@@ -132,17 +133,17 @@ const ChatBot: React.FC = () => {
         <>
             {/* Floating Button */}
             <motion.div
-                className="fixed bottom-6 right-6 z-[9999]"
+                className="fixed bottom-6 right-6 z-[9999] max-sm:bottom-20 max-sm:right-4"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
             >
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setChatOpen(!isChatOpen)}
                     className="w-16 h-16 rounded-full bg-navy hover:bg-navy-light text-white flex items-center justify-center shadow-2xl hover:shadow-pink/20 transition-all group relative"
                     aria-label="Toggle chat"
                 >
-                    {isOpen ? (
+                    {isChatOpen ? (
                         <X className="w-6 h-6" />
                     ) : (
                         <>
@@ -155,13 +156,15 @@ const ChatBot: React.FC = () => {
 
             {/* Chat Window */}
             <AnimatePresence>
-                {isOpen && (
+                {isChatOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed bottom-24 right-6 z-[9999] w-[400px] h-[600px] bg-white rounded-[32px] shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
+                        className="fixed z-[9999] flex flex-col overflow-hidden bg-white shadow-2xl border border-gray-100
+                            bottom-24 right-6 w-[400px] h-[600px] rounded-[32px]
+                            max-md:bottom-0 max-md:right-0 max-md:left-0 max-md:w-full max-md:h-[100dvh] max-md:rounded-none max-md:rounded-t-[32px]"
                     >
                         {/* Header */}
                         <div className="bg-navy text-white p-6 flex items-center justify-between rounded-t-[32px]">
@@ -175,7 +178,7 @@ const ChatBot: React.FC = () => {
                                 </div>
                             </div>
                             <button
-                                onClick={() => setIsOpen(false)}
+                                onClick={() => setChatOpen(false)}
                                 className="text-white/60 hover:text-white transition-colors"
                             >
                                 <X className="w-5 h-5" />

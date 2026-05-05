@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Sparkles } from "lucide-react";
+import { useUI } from "@/contexts/UIContext";
 
 const MobileFAB: React.FC = () => {
     const [visible, setVisible] = useState(false);
+    const { isChatOpen } = useUI();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,7 +22,7 @@ const MobileFAB: React.FC = () => {
 
     return (
         <AnimatePresence>
-            {visible && (
+            {visible && !isChatOpen && (
                 <motion.div
                     initial={{ y: 100, opacity: 0, scale: 0.8 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
